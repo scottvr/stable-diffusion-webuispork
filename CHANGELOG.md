@@ -1,3 +1,7 @@
+### 1.9.4-spork
+
+* merge anapnoe/stable-diffusion-webui-ux 7f26cba into automatic1111/master tag/v1.9.4
+
 ## 1.9.4
 
 ### Bug Fixes:
