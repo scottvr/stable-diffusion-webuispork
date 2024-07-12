@@ -2,6 +2,7 @@ import os
 import numpy as np
 import PIL
 import torch
+from PIL import Image
 from torch.utils.data import Dataset, DataLoader, Sampler
 from torchvision import transforms
 from collections import defaultdict
@@ -9,7 +10,7 @@ from random import shuffle, choices
 
 import random
 import tqdm
-from modules import devices, shared, images
+from modules import devices, shared
 import re
 
 from ldm.modules.distributions.distributions import DiagonalGaussianDistribution
@@ -60,7 +61,7 @@ class PersonalizedBase(Dataset):
             if shared.state.interrupted:
                 raise Exception("interrupted")
             try:
-                image = images.read(path)
+                image = Image.open(path)
                 #Currently does not work for single color transparency
                 #We would need to read image.info['transparency'] for that
                 if use_weight and 'A' in image.getbands():
